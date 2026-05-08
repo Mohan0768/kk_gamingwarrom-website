@@ -1,11 +1,27 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
+
+interface LoadingParticle {
+  id: number
+  left: number
+  duration: number
+  delay: number
+}
 
 export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [progress, setProgress] = useState(0)
   const [showLogo, setShowLogo] = useState(false)
+
+  const loadingParticles = useMemo<LoadingParticle[]>(() => {
+    return Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      duration: 4 + Math.random() * 4,
+      delay: Math.random() * 3,
+    }))
+  }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,23 +48,23 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
       >
         {/* Ember particles */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(30)].map((_, i) => (
+          {loadingParticles.map((particle) => (
             <motion.div
-              key={i}
+              key={particle.id}
               className="absolute w-1 h-1 rounded-full bg-ember"
               style={{
-                left: `${Math.random() * 100}%`,
+                left: `${particle.left}%`,
                 bottom: "-10%",
               }}
               animate={{
-                y: [0, -window.innerHeight - 100],
+                y: ["0vh", "-120vh"],
                 opacity: [0, 1, 1, 0],
                 scale: [1, 0.5],
               }}
               transition={{
-                duration: 4 + Math.random() * 4,
+                duration: particle.duration,
                 repeat: Infinity,
-                delay: Math.random() * 3,
+                delay: particle.delay,
                 ease: "linear",
               }}
             />
