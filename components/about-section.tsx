@@ -1,0 +1,145 @@
+"use client"
+
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
+
+const features = [
+  {
+    icon: "⚔️",
+    title: "60 Minutes of Intensity",
+    description: "A compressed battlefield where every second counts. Make decisions under pressure that reveal your true leadership DNA.",
+  },
+  {
+    icon: "🤖",
+    title: "AI-Powered Analysis",
+    description: "Our advanced AI observes, analyzes, and provides real-time feedback on your decision-making patterns and leadership style.",
+  },
+  {
+    icon: "🎯",
+    title: "Real Business Scenarios",
+    description: "Navigate authentic business challenges that test your strategic thinking, resource allocation, and team management skills.",
+  },
+  {
+    icon: "🏆",
+    title: "Competitive Environment",
+    description: "Compete against other participants in a high-stakes simulation where only the strongest strategies survive.",
+  },
+]
+
+export function AboutSection() {
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
+  return (
+    <section ref={ref} className="relative py-32 overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
+
+      {/* Decorative lines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ember/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ember/30 to-transparent" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <motion.span
+            className="inline-block text-xs font-mono tracking-[0.3em] text-ember mb-4"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            [ MISSION BRIEFING ]
+          </motion.span>
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6">
+            <span className="text-foreground">ABOUT</span>{" "}
+            <span className="fire-text">THE WAR ROOM</span>
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            The War Room is not just a simulation—{"it's"} a crucible that forges leaders through the fire of real-world business challenges.
+          </p>
+        </motion.div>
+
+        {/* Feature cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
+              className="group relative"
+            >
+              <div className="glass-metallic p-8 rounded-lg h-full relative overflow-hidden transition-all duration-500 hover:border-ember/50">
+                {/* Hover glow effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-ember/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                />
+
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-ember/30 group-hover:border-ember transition-colors duration-300" />
+                <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-ember/30 group-hover:border-ember transition-colors duration-300" />
+
+                <div className="relative z-10">
+                  {/* Icon */}
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+
+                  {/* Title */}
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 group-hover:text-ember transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+
+                {/* Bottom accent line */}
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-ember via-gold to-ember"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8"
+        >
+          {[
+            { value: "60", label: "MINUTES" },
+            { value: "6", label: "BATTLE STAGES" },
+            { value: "100+", label: "DECISIONS" },
+            { value: "1", label: "WINNER" },
+          ].map((stat, index) => (
+            <div key={stat.label} className="text-center">
+              <motion.div
+                className="text-4xl md:text-5xl lg:text-6xl font-black fire-text mb-2"
+                initial={{ scale: 0.5 }}
+                animate={isInView ? { scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+              >
+                {stat.value}
+              </motion.div>
+              <div className="text-xs font-mono tracking-widest text-muted-foreground">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}
