@@ -9,6 +9,7 @@ import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { EmberParticles } from "@/components/ember-particles"
 import { HUDOverlay } from "@/components/hud-overlay"
+import { BackgroundMusic } from "@/components/background-music"
 
 export default function WarRoomPage() {
   return (
@@ -16,6 +17,7 @@ export default function WarRoomPage() {
       {/* Global effects */}
       <EmberParticles count={40} />
       <HUDOverlay />
+      <BackgroundMusic />
 
       {/* Page sections */}
       <HeroSection />
