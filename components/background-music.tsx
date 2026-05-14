@@ -41,7 +41,7 @@ export function BackgroundMusic() {
 
   return (
     <>
-      <audio ref={audioRef} src="/audio/war-thunder.mp3" loop preload="auto" />
+      <audio ref={audioRef} src="/audio/cold-space.mp3" loop preload="auto" />
 
       {/* Initial prompt to enable music */}
       <AnimatePresence>
