@@ -192,7 +192,7 @@ export function HeroSection() {
             ENTER THE WAR ROOM
           </FireButton>
           <FireButton size="large" variant="secondary">
-            WATCH THE BATTLE
+            WARROOM FREE TRIAL
           </FireButton>
         </motion.div>
 
