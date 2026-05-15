@@ -24,10 +24,10 @@ export default function WarRoomPage() {
       <AboutSection />
       <BattleStagesSection />
       <AISimulationSection />
-      <SharkTankSection />
+     /*<SharkTankSection />
       <TestimonialsSection />
       <DashboardPreviewSection />
-      <CTASection />
+      <CTASection />/*
       <Footer />
     </main>
   )
