@@ -95,7 +95,7 @@ export function CTASection() {
               ENTER THE WAR ROOM
             </FireButton>
             <FireButton size="large" variant="secondary">
-              START THE SIMULATION
+              WARROM FREE TRAIL
             </FireButton>
           </motion.div>
 
