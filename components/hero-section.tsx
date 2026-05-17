@@ -39,15 +39,15 @@ export function HeroSection() {
 
         {/* Content */}
         <motion.div
-          className="relative z-20 container mx-auto px-4 text-center flex flex-col justify-end items-center pb-32"
+          className="relative z-20 container mx-auto px-4 text-center flex flex-col justify-center items-center h-full"
           style={{ opacity }}
         >
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Positioned in white area below War Room text */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-auto mb-24"
           >
             <FireButton size="large" variant="primary">
               ENTER THE WAR ROOM
