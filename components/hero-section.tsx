@@ -94,28 +94,6 @@ export function HeroSection() {
           <span className="text-xs font-mono tracking-widest text-ember">LIVE AI SIMULATION</span>
         </motion.div>
 
-        {/* Main title */}
-        <motion.h1
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-6"
-        >
-          <span className="fire-text">{"KK's"}</span>
-          <br />
-          <span className="text-foreground">WAR ROOM</span>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          className="text-xl md:text-2xl text-gold tracking-[0.2em] font-light mb-12"
-        >
-          THE ULTIMATE AI-POWERED LEADERSHIP BATTLEFIELD
-        </motion.p>
-
         {/* Narration box */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
