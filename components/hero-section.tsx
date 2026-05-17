@@ -19,26 +19,40 @@ export function HeroSection() {
       ref={ref}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated background */}
+      {/* Layer 1: Background texture image (z-0) */}
       <motion.div
         className="absolute inset-0 z-0"
         style={{ y }}
       >
-        {/* Background image */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{
-            backgroundImage: "url('/images/war-room-hero-bg.png')",
+            backgroundImage: "url('/textures/dark-wall.jpg')",
           }}
         />
-        
-        {/* Dark overlay for text legibility */}
-        <div className="absolute inset-0 bg-black/30 z-10" />
       </motion.div>
 
-      {/* Content */}
+      {/* Layer 2: Effects and overlays (z-10) */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        {/* Dark overlay for text legibility */}
+        <div className="absolute inset-0 bg-black/20" />
+        
+        {/* Ambient fire particles */}
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{ duration: 4, repeat: Infinity }}
+        >
+          <div className="absolute top-10 right-20 w-32 h-32 bg-ember/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-10 w-40 h-40 bg-amber-600/5 rounded-full blur-3xl" />
+        </motion.div>
+      </div>
+
+      {/* Layer 3: Content - Text and Button Animations (z-20) */}
       <motion.div
-        className="relative z-20 container mx-auto px-4 text-center flex flex-col items-center justify-center w-full h-screen"
+        className="relative z-20 container mx-auto px-4 text-center flex flex-col items-center justify-center w-full h-screen pointer-events-auto"
         style={{ opacity }}
       >
         {/* Spacer to push content down */}
@@ -51,12 +65,16 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <FireButton size="large" variant="primary">
-            ENTER THE WAR ROOM
-          </FireButton>
-          <FireButton size="large" variant="secondary">
-            WARROOM FREE TRIAL
-          </FireButton>
+          <a href="https://warroom-frontend-410969764896.us-central1.run.app/" target="_blank" rel="noopener noreferrer">
+            <FireButton size="large" variant="primary">
+              ENTER THE WAR ROOM
+            </FireButton>
+          </a>
+          <a href="https://war-roomdemo.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <FireButton size="large" variant="secondary">
+              WARROOM FREE TRIAL
+            </FireButton>
+          </a>
         </motion.div>
       </motion.div>
     </section>
