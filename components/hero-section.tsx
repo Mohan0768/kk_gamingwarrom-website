@@ -24,13 +24,19 @@ export function HeroSection() {
         className="absolute inset-0 z-0"
         style={{ y }}
       >
+        {/* Mobile/Tablet background */}
         <div
-          className="absolute inset-0 bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center md:hidden"
+          style={{
+            backgroundImage: "url('/images/kk-warroom-mobile.jpg')",
+          }}
+        />
+        
+        {/* Desktop background */}
+        <div
+          className="hidden md:block absolute inset-0 bg-cover bg-center bg-fixed"
           style={{
             backgroundImage: "url('/images/kk-warroom-hero.jpg')",
-            backgroundSize: "auto 100%",
-            backgroundPosition: "center",
-            backgroundAttachment: "fixed",
           }}
         />
       </motion.div>
