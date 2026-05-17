@@ -1,14 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef, useState, useEffect } from "react"
-import { FireButton } from "./fire-button"
-
-const narrationText = [
-  "I have put all my years of experience as an award-winning Leadership Training Professional, an entrepreneur, a process excellence expert, and a sports player into WAR ROOM and trained an AI to act as me.",
-  "KK's War Room is a 60-minute, high-intensity AI-Powered LIVE business simulation that reveals how participants think, decide, and take ownership under pressure.",
-  "Participants build a business across 6 stages in real time and pitch to investors in a shark-tank inspired WAR ROOM LIVE AI simulation.",
-]
+import { useRef } from "react"
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
@@ -19,38 +12,6 @@ export function HeroSection() {
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 200])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-
-  const [currentLine, setCurrentLine] = useState(0)
-  const [displayedText, setDisplayedText] = useState("")
-  const [isTyping, setIsTyping] = useState(true)
-
-  useEffect(() => {
-    if (currentLine >= narrationText.length) {
-      setCurrentLine(0)
-      setDisplayedText("")
-      return
-    }
-
-    const text = narrationText[currentLine]
-    let charIndex = 0
-    setIsTyping(true)
-
-    const typeInterval = setInterval(() => {
-      if (charIndex <= text.length) {
-        setDisplayedText(text.slice(0, charIndex))
-        charIndex++
-      } else {
-        clearInterval(typeInterval)
-        setIsTyping(false)
-        setTimeout(() => {
-          setCurrentLine((prev) => prev + 1)
-          setDisplayedText("")
-        }, 3000)
-      }
-    }, 30)
-
-    return () => clearInterval(typeInterval)
-  }, [currentLine])
 
   return (
     <section
@@ -79,84 +40,6 @@ export function HeroSection() {
         className="relative z-20 container mx-auto px-4 py-20 text-center"
         style={{ opacity }}
       >
-        {/* War Room badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-ember/30 bg-ember/5 mb-8"
-        >
-          <motion.div
-            className="w-2 h-2 rounded-full bg-ember"
-            animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-          <span className="text-xs font-mono tracking-widest text-ember">LIVE AI SIMULATION</span>
-        </motion.div>
-
-        {/* Narration box */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.9 }}
-          className="max-w-4xl mx-auto mb-12 p-6 md:p-8 glass-metallic rounded-lg relative"
-        >
-          {/* Corner decorations */}
-          <div className="absolute top-0 left-0 w-4 h-4 border-l-2 border-t-2 border-ember" />
-          <div className="absolute top-0 right-0 w-4 h-4 border-r-2 border-t-2 border-ember" />
-          <div className="absolute bottom-0 left-0 w-4 h-4 border-l-2 border-b-2 border-ember" />
-          <div className="absolute bottom-0 right-0 w-4 h-4 border-r-2 border-b-2 border-ember" />
-
-          {/* Speaker indicator */}
-          <div className="flex items-center gap-3 mb-4">
-            <motion.div
-              className="w-3 h-3 rounded-full bg-ember"
-              animate={{ scale: isTyping ? [1, 1.3, 1] : 1 }}
-              transition={{ duration: 0.5, repeat: isTyping ? Infinity : 0 }}
-            />
-            <span className="text-xs font-mono text-ember tracking-widest">COMMANDER KK</span>
-          </div>
-
-          {/* Narration text */}
-          <p className="text-lg md:text-xl text-foreground/90 leading-relaxed min-h-[100px]">
-            {displayedText}
-            {isTyping && (
-              <motion.span
-                className="inline-block w-0.5 h-5 bg-ember ml-1"
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-              />
-            )}
-          </p>
-
-          {/* Progress indicators */}
-          <div className="flex justify-center gap-2 mt-6">
-            {narrationText.map((_, i) => (
-              <div
-                key={i}
-                className={`w-8 h-1 rounded-full transition-all duration-300 ${
-                  i === currentLine ? "bg-ember" : i < currentLine ? "bg-ember/50" : "bg-muted"
-                }`}
-              />
-            ))}
-          </div>
-        </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <FireButton size="large" variant="primary">
-            ENTER THE WAR ROOM
-          </FireButton>
-          <FireButton size="large" variant="secondary">
-            WARROOM FREE TRIAL
-          </FireButton>
-        </motion.div>
-
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
