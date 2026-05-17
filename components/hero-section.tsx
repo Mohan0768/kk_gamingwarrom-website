@@ -39,7 +39,7 @@ export function HeroSection() {
 
         {/* Content */}
         <motion.div
-          className="relative z-20 container mx-auto px-4 text-center flex flex-col justify-center items-center"
+          className="relative z-20 container mx-auto px-4 text-center flex flex-col justify-end items-center pb-32"
           style={{ opacity }}
         >
           {/* CTA Buttons */}
