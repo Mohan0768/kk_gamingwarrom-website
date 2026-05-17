@@ -30,7 +30,7 @@ export function HUDOverlay() {
           animate={{ opacity: [0.3, 1, 0.3] }}
           transition={{ duration: 2, repeat: Infinity }}
         />
-        <span className="text-xs font-mono text-ember tracking-[0.3em]">WAR ROOM ACTIVE</span>
+        <span className="text-xs font-mono text-ember tracking-[0.3em]"></span>
         <motion.div
           className="h-[1px] w-32 bg-gradient-to-r from-transparent via-ember to-transparent"
           animate={{ opacity: [0.3, 1, 0.3] }}
