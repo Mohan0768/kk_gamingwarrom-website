@@ -62,33 +62,16 @@ export function HeroSection() {
         className="absolute inset-0 z-0"
         style={{ y }}
       >
-        {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background z-10" />
-        
-        {/* Animated fire/smoke background */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(139,0,0,0.3)_0%,_transparent_70%)]" />
-        
-        {/* Animated gradient orbs */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-30"
-          style={{ background: "radial-gradient(circle, rgba(255,69,0,0.5) 0%, transparent 70%)" }}
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0],
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/war-room-hero-bg.png')",
           }}
-          transition={{ duration: 8, repeat: Infinity }}
         />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-20"
-          style={{ background: "radial-gradient(circle, rgba(255,140,0,0.5) 0%, transparent 70%)" }}
-          animate={{
-            scale: [1.2, 1, 1.2],
-            x: [0, -40, 0],
-            y: [0, 40, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity }}
-        />
+        
+        {/* Dark overlay for text legibility */}
+        <div className="absolute inset-0 bg-black/30 z-10" />
       </motion.div>
 
       {/* Content */}

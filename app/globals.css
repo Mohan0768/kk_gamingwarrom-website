@@ -89,6 +89,16 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    /* Stone texture background pattern */
+    background-image: 
+      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,.1) 2px, rgba(255,255,255,.1) 4px),
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.08) 2px, rgba(255,255,255,.08) 4px),
+      repeating-linear-gradient(45deg, transparent, transparent 1px, rgba(255,255,255,.05) 1px, rgba(255,255,255,.05) 2px),
+      repeating-linear-gradient(-45deg, transparent, transparent 1px, rgba(255,255,255,.05) 1px, rgba(255,255,255,.05) 2px),
+      linear-gradient(180deg, rgba(30,25,25,1) 0%, rgba(40,35,35,1) 50%, rgba(35,30,30,1) 100%);
+    background-attachment: fixed;
+  }
   body {
     @apply bg-background text-foreground;
   }
