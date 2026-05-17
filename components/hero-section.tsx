@@ -65,6 +65,11 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 1.5 }}
           className="flex flex-col items-center gap-2"
         >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="flex flex-col items-center gap-2"
+          >
             <span className="text-xs font-mono text-muted-foreground tracking-widest">SCROLL TO DEPLOY</span>
             <div className="w-6 h-10 rounded-full border-2 border-ember/50 flex justify-center pt-2">
               <motion.div
@@ -75,7 +80,6 @@ export function HeroSection() {
             </div>
           </motion.div>
         </motion.div>
-      </motion.div>
     </section>
   )
 }
