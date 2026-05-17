@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import { TypingText } from "./typing-text"
 
 const features = [
   {
@@ -65,6 +66,7 @@ export function AboutSection() {
         </motion.div>
 
         {/* Feature cards */}
+        <TypingText />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <motion.div

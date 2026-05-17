@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
+import { FireButton } from "./fire-button"
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
@@ -37,21 +38,33 @@ export function HeroSection() {
 
       {/* Content */}
       <motion.div
-        className="relative z-20 container mx-auto px-4 py-20 text-center"
+        className="relative z-20 container mx-auto px-4 py-20 text-center h-full flex flex-col justify-between"
         style={{ opacity }}
       >
+        <div />
+        
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+        >
+          <FireButton size="large" variant="primary">
+            ENTER THE WAR ROOM
+          </FireButton>
+          <FireButton size="large" variant="secondary">
+            WARROOM FREE TRIAL
+          </FireButton>
+        </motion.div>
+
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="flex flex-col items-center gap-2"
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2"
-          >
             <span className="text-xs font-mono text-muted-foreground tracking-widest">SCROLL TO DEPLOY</span>
             <div className="w-6 h-10 rounded-full border-2 border-ember/50 flex justify-center pt-2">
               <motion.div
