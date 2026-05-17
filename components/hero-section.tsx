@@ -63,7 +63,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 w-full px-2"
         >
           <a href="https://warroom-frontend-410969764896.us-central1.run.app/" target="_blank" rel="noopener noreferrer">
             <FireButton size="large" variant="primary">
