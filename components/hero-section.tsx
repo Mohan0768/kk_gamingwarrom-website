@@ -49,7 +49,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 pb-20"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <FireButton size="large" variant="primary">
             ENTER THE WAR ROOM
@@ -57,29 +57,6 @@ export function HeroSection() {
           <FireButton size="large" variant="secondary">
             WARROOM FREE TRIAL
           </FireButton>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="flex flex-col items-center gap-2 pb-8"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2"
-          >
-            <span className="text-xs font-mono text-muted-foreground tracking-widest">SCROLL TO DEPLOY</span>
-            <div className="w-6 h-10 rounded-full border-2 border-ember/50 flex justify-center pt-2">
-              <motion.div
-                className="w-1.5 h-3 rounded-full bg-ember"
-                animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </div>
-          </motion.div>
         </motion.div>
       </motion.div>
     </section>
