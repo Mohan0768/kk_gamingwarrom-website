@@ -38,17 +38,15 @@ export function HeroSection() {
 
       {/* Content */}
       <motion.div
-        className="relative z-20 container mx-auto px-4 py-20 text-center h-full flex flex-col justify-between"
+        className="relative z-20 container mx-auto px-4 py-20 text-center flex flex-col items-center justify-end w-full h-screen"
         style={{ opacity }}
       >
-        <div />
-        
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-32"
         >
           <FireButton size="large" variant="primary">
             ENTER THE WAR ROOM
@@ -63,7 +61,7 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="flex flex-col items-center gap-2"
+          className="flex flex-col items-center gap-2 mt-auto mb-8"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
