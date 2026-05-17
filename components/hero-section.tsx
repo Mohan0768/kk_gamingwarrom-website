@@ -80,6 +80,7 @@ export function HeroSection() {
             </div>
           </motion.div>
         </motion.div>
+      </motion.div>
     </section>
   )
 }
