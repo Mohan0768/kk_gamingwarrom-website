@@ -25,10 +25,9 @@ export function HeroSection() {
         style={{ y }}
       >
         <div
-          className="absolute inset-0 bg-center bg-no-repeat md:bg-cover md:bg-fixed"
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{
             backgroundImage: "url('/images/kk-warroom-hero.jpg')",
-            backgroundSize: "contain",
           }}
         />
       </motion.div>
