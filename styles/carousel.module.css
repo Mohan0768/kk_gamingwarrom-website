@@ -1,0 +1,353 @@
+/* War Room Gaming Carousel - Dark theme with orange/red accents */
+
+:root {
+  --carousel-menu-width: 280px;
+  --carousel-scene-width: 1200px;
+  --carousel-scene-height: 500px;
+  --carousel-primary: #FF4500;
+  --carousel-secondary: #FF6347;
+  --carousel-background: #1a1a1a;
+  --carousel-text: #ffffff;
+  --carousel-text-muted: #999999;
+  --carousel-border: #333333;
+}
+
+.scene {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: var(--carousel-scene-width);
+  height: var(--carousel-scene-height);
+  position: relative;
+  margin: 0 auto;
+  background-color: var(--carousel-background);
+  border: 1px solid var(--carousel-border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 69, 0, 0.1);
+}
+
+.leftZone {
+  background: var(--carousel-background);
+  height: 100%;
+  display: flex;
+  width: var(--carousel-menu-width);
+  align-items: center;
+  justify-content: flex-start;
+  border-right: 1px solid var(--carousel-border);
+  position: relative;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.radio {
+  display: none;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+  padding: 0 20px;
+  opacity: 0.6;
+  color: var(--carousel-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  user-select: none;
+  border-right: 3px solid transparent;
+}
+
+.label:hover {
+  opacity: 0.8;
+  color: var(--carousel-text);
+}
+
+.label::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+.radio:checked + .label {
+  opacity: 1;
+  color: var(--carousel-primary);
+  border-right-color: var(--carousel-primary);
+}
+
+.content {
+  position: absolute;
+  left: var(--carousel-menu-width);
+  top: -var(--carousel-scene-height);
+  width: calc(100% - var(--carousel-menu-width));
+  height: var(--carousel-scene-height);
+  animation: slideout 0.6s ease-out forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(30, 20, 20, 0.95) 100%);
+  padding: 40px;
+  text-align: center;
+  z-index: 1;
+}
+
+.radio:checked ~ .content {
+  animation: slidein 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) forwards;
+  z-index: 2;
+}
+
+.picto {
+  font-size: 80px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: picto-float 3s ease-in-out infinite;
+}
+
+.content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 16px 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: title-slide 0.6s ease-out 0.2s both;
+}
+
+.content p {
+  max-width: 65%;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cccccc;
+  animation: desc-fade 0.6s ease-out 0.3s both;
+}
+
+.middleBorder {
+  background-color: var(--carousel-border);
+  height: 100%;
+  flex-grow: 1;
+  max-width: 1px;
+  z-index: 0;
+}
+
+.rightZone {
+  background: var(--carousel-background);
+  height: 100%;
+  flex-grow: 3;
+  position: relative;
+  overflow: hidden;
+}
+
+.rightZone::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--carousel-primary) 50%,
+    transparent 100%
+  );
+  opacity: 0.3;
+}
+
+/* Animations */
+@keyframes slidein {
+  from {
+    top: calc(-1 * var(--carousel-scene-height));
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slideout {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: calc(-1 * var(--carousel-scene-height));
+    opacity: 0;
+  }
+}
+
+@keyframes picto-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+@keyframes title-slide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes desc-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  :root {
+    --carousel-menu-width: 220px;
+    --carousel-scene-width: 100%;
+    --carousel-scene-height: 450px;
+  }
+
+  .content h1 {
+    font-size: 24px;
+  }
+
+  .picto {
+    font-size: 60px;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --carousel-menu-width: 180px;
+    --carousel-scene-height: 400px;
+  }
+
+  .label {
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .label::before {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  .content {
+    padding: 24px;
+  }
+
+  .content h1 {
+    font-size: 20px;
+  }
+
+  .content p {
+    max-width: 100%;
+    font-size: 13px;
+  }
+
+  .picto {
+    font-size: 50px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .scene {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .leftZone {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--carousel-border);
+  }
+
+  .list {
+    flex-direction: row;
+  }
+
+  .item {
+    flex: 1;
+  }
+
+  .label {
+    justify-content: center;
+    flex-direction: column;
+    height: 60px;
+    padding: 8px;
+    font-size: 11px;
+  }
+
+  .label::before {
+    margin-right: 0;
+    margin-bottom: 4px;
+  }
+
+  .content {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    animation: none !important;
+  }
+
+  .radio:checked ~ .content {
+    animation: none !important;
+  }
+
+  .middleBorder {
+    display: none;
+  }
+
+  .rightZone {
+    display: none;
+  }
+}
