@@ -6,6 +6,7 @@ import { SharkTankSection } from "@/components/shark-tank-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { DashboardPreviewSection } from "@/components/dashboard-preview-section"
 import { CTASection } from "@/components/cta-section"
+import { CarouselSection } from "@/components/carousel-section"
 import { EmberParticles } from "@/components/ember-particles"
 import { HUDOverlay } from "@/components/hud-overlay"
 import { BackgroundMusic } from "@/components/background-music"
@@ -23,6 +24,7 @@ export default function WarRoomPage() {
       <AboutSection />
       <BattleStagesSection />
       <AISimulationSection />
+      <CarouselSection />
       
       <CTASection />
     </main>
