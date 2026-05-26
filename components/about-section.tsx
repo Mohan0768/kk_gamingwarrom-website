@@ -98,7 +98,41 @@ export function AboutSection() {
                 transition={{ duration: 0.8, delay: 0.2 + index * 0.12 }}
                 className="group relative"
               >
-                <div className="glass-metallic p-4 sm:p-6 md:p-8 rounded-lg h-full relative overflow-hidden transition-all duration-500 hover:border-ember/50 border border-ember/20">
+                {/* Flame glow background - outer */}
+                <motion.div
+                  className="absolute -inset-1 rounded-lg bg-gradient-to-br from-ember via-gold to-ember opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-500 z-0"
+                  animate={{
+                    opacity: [0.15, 0.3, 0.15],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: index * 0.3,
+                  }}
+                />
+
+                {/* Inner flame glow with multiple layers */}
+                <motion.div
+                  className="absolute -inset-0.5 rounded-lg bg-gradient-to-r from-amber-600/0 via-orange-500/20 to-red-600/0 opacity-0 group-hover:opacity-60 blur-md transition-opacity duration-500 z-0"
+                  animate={{
+                    boxShadow: [
+                      "0 0 20px 5px rgba(255, 102, 0, 0.3)",
+                      "0 0 40px 15px rgba(255, 69, 0, 0.4)",
+                      "0 0 20px 5px rgba(255, 102, 0, 0.3)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: index * 0.3,
+                  }}
+                />
+
+                <div className="glass-metallic p-4 sm:p-6 md:p-8 rounded-lg h-full relative overflow-hidden transition-all duration-500 hover:border-ember/80 border border-ember/20 z-10 shadow-lg"
+                  style={{
+                    boxShadow: "inset 0 1px 0 0 rgba(255, 69, 0, 0.1), 0 0 0 1px rgba(255, 69, 0, 0.1)"
+                  }}
+                >
                   {/* Animated gradient background on hover */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-br from-ember/15 via-transparent to-ember/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -147,20 +181,21 @@ export function AboutSection() {
                     transition={{ duration: 0.4 }}
                   />
 
-                  {/* Glow pulse on scroll */}
+                  {/* Flame glow pulse effect */}
                   <motion.div
-                    className="absolute inset-0 rounded-lg border border-ember/20"
+                    className="absolute inset-0 rounded-lg pointer-events-none"
                     animate={{
                       boxShadow: [
-                        "0 0 0 0 rgba(255, 69, 0, 0)",
-                        "0 0 20px 10px rgba(255, 69, 0, 0.1)",
-                        "0 0 0 0 rgba(255, 69, 0, 0)",
+                        "inset 0 0 0 1px rgba(255, 69, 0, 0.1), 0 0 20px 0px rgba(255, 102, 0, 0.2)",
+                        "inset 0 0 10px 2px rgba(255, 69, 0, 0.15), 0 0 40px 10px rgba(255, 69, 0, 0.35)",
+                        "inset 0 0 5px 1px rgba(255, 69, 0, 0.1), 0 0 25px 5px rgba(255, 102, 0, 0.2)",
                       ],
                     }}
                     transition={{
-                      duration: 3,
+                      duration: 2.5,
                       repeat: Infinity,
-                      delay: index * 0.3,
+                      ease: "easeInOut",
+                      delay: index * 0.35,
                     }}
                   />
                 </div>
