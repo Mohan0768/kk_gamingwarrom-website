@@ -200,3 +200,33 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #FF6347, #B22222);
 }
+
+/* MagicScroll carousel styling */
+.MagicScroll {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.MagicScroll > div {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.MagicScroll [data-index] {
+  display: flex;
+  flex-shrink: 0;
+}
+
+/* Carousel smooth scrolling */
+.MagicScroll-scroll-container {
+  scroll-behavior: smooth;
+}
+
+/* Carousel item spacing */
+.MagicScroll [data-index] > * {
+  width: 100%;
+}

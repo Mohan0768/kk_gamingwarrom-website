@@ -1,8 +1,9 @@
 "use client"
 
-import { motion, useInView, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
+import { motion, useInView } from "framer-motion"
+import { useRef, useEffect } from "react"
 import { TypingText } from "./typing-text"
+import MagicScroll from "magic-scroll"
 
 const features = [
   {
@@ -29,16 +30,20 @@ const features = [
 
 export function AboutSection() {
   const ref = useRef<HTMLDivElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"],
-  })
 
-  const rotateX = useTransform(scrollYProgress, [0, 1], [5, -5])
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.4, 1, 1, 0.4])
+  useEffect(() => {
+    if (carouselRef.current) {
+      new MagicScroll({
+        container: carouselRef.current,
+        scrollWheelSpeed: 1,
+        speed: 0.08,
+        mode: "carousel",
+        autoplay: false,
+      })
+    }
+  }, [])
 
   return (
     <section ref={ref} className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
@@ -74,30 +79,21 @@ export function AboutSection() {
           </p>
         </motion.div>
 
-        {/* Feature cards */}
+        {/* Feature cards carousel */}
         <TypingText />
-        <motion.div
-          ref={containerRef}
-          className="my-12 sm:my-16 md:my-20 perspective"
-          style={{
-            perspective: "1200px",
-          }}
+        <div
+          ref={carouselRef}
+          className="MagicScroll my-12 sm:my-16 md:my-20"
+          data-options="mode: carousel; speed: 0.08;"
         >
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
-            style={{
-              rotateX,
-              opacity,
-            }}
-          >
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 + index * 0.12 }}
-                className="group relative"
-              >
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 + index * 0.12 }}
+              className="group relative flex-shrink-0 w-full sm:w-[calc(50%-0.75rem)] md:w-[calc(50%-1rem)] lg:w-[calc(50%-1.5rem)] snap-center"
+            >
                 {/* Flame glow background - outer */}
                 <motion.div
                   className="absolute -inset-1 rounded-lg bg-gradient-to-br from-ember via-gold to-ember opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-500 z-0"
@@ -200,9 +196,8 @@ export function AboutSection() {
                   />
                 </div>
               </motion.div>
-            ))}
-          </motion.div>
-        </motion.div>
+          ))}
+        </div>
 
         {/* Stats */}
         <motion.div
