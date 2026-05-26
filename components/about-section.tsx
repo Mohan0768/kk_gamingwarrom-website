@@ -1,7 +1,7 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
+import { useRef, useEffect } from "react"
 import { TypingText } from "./typing-text"
 
 const features = [
@@ -29,7 +29,29 @@ const features = [
 
 export function AboutSection() {
   const ref = useRef<HTMLDivElement>(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  
+  const x = useMotionValue(0)
+
+  useEffect(() => {
+    if (!carouselRef.current) return
+
+    const scrollWidth = carouselRef.current.scrollWidth
+    const clientWidth = carouselRef.current.clientWidth
+    const distance = scrollWidth - clientWidth
+
+    if (distance <= 0) return
+
+    const controls = animate(x, [-distance], {
+      duration: 20 + (distance / 100),
+      repeat: Infinity,
+      repeatType: "reverse",
+      ease: "linear",
+    })
+
+    return () => controls.stop()
+  }, [])
 
   return (
     <section ref={ref} className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
@@ -67,8 +89,11 @@ export function AboutSection() {
 
         {/* Feature cards carousel */}
         <TypingText />
-        <div className="my-12 sm:my-16 md:my-20 overflow-x-auto scrollbar-hide">
-          <div className="flex gap-4 sm:gap-6 lg:gap-8 min-w-max pb-4">
+        <div ref={carouselRef} className="my-12 sm:my-16 md:my-20 overflow-hidden">
+          <motion.div 
+            className="flex gap-4 sm:gap-6 lg:gap-8 pb-4"
+            style={{ x }}
+          >
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -180,7 +205,7 @@ export function AboutSection() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Stats */}
