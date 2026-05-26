@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import { TypingText } from "./typing-text"
 
@@ -29,7 +29,16 @@ const features = [
 
 export function AboutSection() {
   const ref = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  })
+
+  const rotateX = useTransform(scrollYProgress, [0, 1], [5, -5])
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.4, 1, 1, 0.4])
 
   return (
     <section ref={ref} className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
@@ -67,51 +76,98 @@ export function AboutSection() {
 
         {/* Feature cards */}
         <TypingText />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 my-12 sm:my-16 md:my-20">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-              className="group relative"
-            >
-              <div className="glass-metallic p-4 sm:p-6 md:p-8 rounded-lg h-full relative overflow-hidden transition-all duration-500 hover:border-ember/50">
-                {/* Hover glow effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-ember/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                />
+        <motion.div
+          ref={containerRef}
+          className="my-12 sm:my-16 md:my-20 perspective"
+          style={{
+            perspective: "1200px",
+          }}
+        >
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
+            style={{
+              rotateX,
+              opacity,
+            }}
+          >
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 + index * 0.12 }}
+                className="group relative"
+              >
+                <div className="glass-metallic p-4 sm:p-6 md:p-8 rounded-lg h-full relative overflow-hidden transition-all duration-500 hover:border-ember/50 border border-ember/20">
+                  {/* Animated gradient background on hover */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-ember/15 via-transparent to-ember/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  />
 
-                {/* Corner accents */}
-                <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-ember/30 group-hover:border-ember transition-colors duration-300" />
-                <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-ember/30 group-hover:border-ember transition-colors duration-300" />
+                  {/* Animated corner accents */}
+                  <motion.div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-ember/30 group-hover:border-ember transition-colors duration-300" />
+                  <motion.div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-ember/30 group-hover:border-ember transition-colors duration-300" />
 
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-4">{feature.icon}</div>
+                  {/* Animated light streak effect */}
+                  <motion.div
+                    className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ember/50 to-transparent"
+                    initial={{ opacity: 0, x: "-100%" }}
+                    whileHover={{ opacity: 1, x: "100%" }}
+                    transition={{ duration: 0.8 }}
+                  />
 
-                  {/* Title */}
-                  <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-ember transition-colors duration-300">
-                    {feature.title}
-                  </h3>
+                  <div className="relative z-10">
+                    {/* Icon with scale animation */}
+                    <motion.div
+                      className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-4 inline-block"
+                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      {feature.icon}
+                    </motion.div>
 
-                  {/* Description */}
-                  <p className="text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
+                    {/* Title with color transition */}
+                    <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-ember transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+
+                  {/* Animated bottom accent line */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-ember to-transparent"
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    whileHover={{ scaleX: 1, opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                  />
+
+                  {/* Glow pulse on scroll */}
+                  <motion.div
+                    className="absolute inset-0 rounded-lg border border-ember/20"
+                    animate={{
+                      boxShadow: [
+                        "0 0 0 0 rgba(255, 69, 0, 0)",
+                        "0 0 20px 10px rgba(255, 69, 0, 0.1)",
+                        "0 0 0 0 rgba(255, 69, 0, 0)",
+                      ],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      delay: index * 0.3,
+                    }}
+                  />
                 </div>
-
-                {/* Bottom accent line */}
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-ember via-gold to-ember"
-                  initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
 
         {/* Stats */}
         <motion.div
