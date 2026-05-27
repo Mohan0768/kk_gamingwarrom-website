@@ -11,7 +11,8 @@ const features = [
     description: "A compressed battlefield where every second counts. Make decisions under pressure that reveal your true leadership DNA.",
   },
   {
-    icon: "🤖",
+    icon: null,
+    hasImage: true,
     title: "AI-Powered Analysis",
     description: "Our advanced AI observes, analyzes, and provides real-time feedback on your decision-making patterns and leadership style.",
   },
@@ -132,14 +133,43 @@ export function AboutSection() {
                   />
 
                   <div className="relative z-10">
-                    {/* Icon with scale animation */}
-                    <motion.div
-                      className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-4 inline-block"
-                      whileHover={{ scale: 1.2, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    >
-                      {feature.icon}
-                    </motion.div>
+                    {/* Icon or Image with scale animation */}
+                    {feature.hasImage ? (
+                      <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mb-2 sm:mb-4 inline-block">
+                        {/* Flame effect wrapper */}
+                        <motion.div
+                          className="absolute inset-0 rounded-full"
+                          animate={{
+                            boxShadow: [
+                              "0 0 20px 4px rgba(255, 69, 0, 0.4), inset 0 0 20px 2px rgba(255, 102, 0, 0.2)",
+                              "0 0 40px 12px rgba(255, 0, 0, 0.5), inset 0 0 30px 4px rgba(255, 140, 0, 0.3)",
+                              "0 0 20px 4px rgba(255, 69, 0, 0.4), inset 0 0 20px 2px rgba(255, 102, 0, 0.2)",
+                            ],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                        />
+                        {/* Image with glow */}
+                        <motion.img
+                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-vOejD4xXxgD9u5GFU8D8y5LWIZd4Wk.png"
+                          alt="AI-Powered Analysis"
+                          className="relative z-10 w-full h-full object-contain"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        />
+                      </div>
+                    ) : (
+                      <motion.div
+                        className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-4 inline-block"
+                        whileHover={{ scale: 1.2, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      >
+                        {feature.icon}
+                      </motion.div>
+                    )}
 
                     {/* Title with color transition */}
                     <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-ember transition-colors duration-300">
