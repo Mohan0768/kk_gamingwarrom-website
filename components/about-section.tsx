@@ -156,7 +156,7 @@ export function AboutSection() {
                         <motion.img
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AdobeExpressPhotos_0ddd2ce1ef1d4c70be03b6f3db057d09_CopyEdited-ZKxz0SEITYTerCUFDo8Y1TOmsSA8z3.png"
                           alt="AI-Powered Analysis"
-                          className="relative z-10 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
+                          className="relative z-10 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain"
                           whileHover={{ scale: 1.1 }}
                           transition={{ type: "spring", stiffness: 400, damping: 10 }}
                         />
