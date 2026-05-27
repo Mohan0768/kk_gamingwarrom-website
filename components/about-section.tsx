@@ -135,31 +135,15 @@ export function AboutSection() {
                   <div className="relative z-10">
                     {/* Icon or Image with scale animation */}
                     {feature.hasImage ? (
-                      <motion.div 
-                        className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-4 inline-block rounded-lg border-2 border-ember/40"
-                        animate={{
-                          borderColor: [
-                            "rgba(255, 69, 0, 0.4)",
-                            "rgba(255, 0, 0, 0.6)",
-                            "rgba(255, 102, 0, 0.5)",
-                            "rgba(255, 69, 0, 0.4)",
-                          ],
-                        }}
-                        transition={{
-                          duration: 2.5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        {/* Simple box-shadow glow on border */}
+                      <div className="relative mb-2 sm:mb-4 inline-block">
+                        {/* Glow effect background */}
                         <motion.div
-                          className="absolute inset-0 rounded-lg pointer-events-none"
+                          className="absolute -inset-3 sm:-inset-4 rounded-full"
                           animate={{
                             boxShadow: [
-                              "0 0 8px 1px rgba(255, 102, 0, 0.4)",
-                              "0 0 16px 2px rgba(255, 69, 0, 0.5)",
-                              "0 0 8px 1px rgba(255, 102, 0, 0.4)",
+                              "0 0 15px 2px rgba(255, 102, 0, 0.5)",
+                              "0 0 30px 6px rgba(255, 69, 0, 0.6)",
+                              "0 0 15px 2px rgba(255, 102, 0, 0.5)",
                             ],
                           }}
                           transition={{
@@ -169,12 +153,14 @@ export function AboutSection() {
                           }}
                         />
                         {/* Image */}
-                        <img
+                        <motion.img
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AdobeExpressPhotos_0ddd2ce1ef1d4c70be03b6f3db057d09_CopyEdited-ZKxz0SEITYTerCUFDo8Y1TOmsSA8z3.png"
                           alt="AI-Powered Analysis"
-                          className="relative z-10 w-full h-full object-contain rounded-md"
+                          className="relative z-10 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
                         />
-                      </motion.div>
+                      </div>
                     ) : (
                       <motion.div
                         className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-4 inline-block"
