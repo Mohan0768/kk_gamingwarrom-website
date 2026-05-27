@@ -6,7 +6,7 @@ import { TypingText } from "./typing-text"
 
 const features = [
   {
-    icon: "⚔️",
+   
     title: "60 Minutes of Intensity",
     description: "A compressed battlefield where every second counts. Make decisions under pressure that reveal your true leadership DNA.",
   },
