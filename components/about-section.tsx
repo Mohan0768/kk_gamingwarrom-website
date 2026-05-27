@@ -135,32 +135,46 @@ export function AboutSection() {
                   <div className="relative z-10">
                     {/* Icon or Image with scale animation */}
                     {feature.hasImage ? (
-                      <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mb-2 sm:mb-4 inline-block">
-                        {/* Flame effect wrapper */}
+                      <motion.div 
+                        className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mb-2 sm:mb-4 inline-block rounded-lg border-2 border-ember/40"
+                        animate={{
+                          borderColor: [
+                            "rgba(255, 69, 0, 0.4)",
+                            "rgba(255, 0, 0, 0.6)",
+                            "rgba(255, 102, 0, 0.5)",
+                            "rgba(255, 69, 0, 0.4)",
+                          ],
+                        }}
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {/* Simple box-shadow glow on border */}
                         <motion.div
-                          className="absolute inset-0 rounded-full"
+                          className="absolute inset-0 rounded-lg pointer-events-none"
                           animate={{
                             boxShadow: [
-                              "0 0 20px 4px rgba(255, 69, 0, 0.4), inset 0 0 20px 2px rgba(255, 102, 0, 0.2)",
-                              "0 0 40px 12px rgba(255, 0, 0, 0.5), inset 0 0 30px 4px rgba(255, 140, 0, 0.3)",
-                              "0 0 20px 4px rgba(255, 69, 0, 0.4), inset 0 0 20px 2px rgba(255, 102, 0, 0.2)",
+                              "0 0 8px 1px rgba(255, 102, 0, 0.4)",
+                              "0 0 16px 2px rgba(255, 69, 0, 0.5)",
+                              "0 0 8px 1px rgba(255, 102, 0, 0.4)",
                             ],
                           }}
                           transition={{
-                            duration: 3,
+                            duration: 2.5,
                             repeat: Infinity,
                             ease: "easeInOut",
                           }}
                         />
-                        {/* Image with glow */}
-                        <motion.img
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-vOejD4xXxgD9u5GFU8D8y5LWIZd4Wk.png"
+                        {/* Image */}
+                        <img
+                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/AdobeExpressPhotos_0ddd2ce1ef1d4c70be03b6f3db057d09_CopyEdited-ZKxz0SEITYTerCUFDo8Y1TOmsSA8z3.png"
                           alt="AI-Powered Analysis"
-                          className="relative z-10 w-full h-full object-contain"
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                          className="relative z-10 w-full h-full object-contain rounded-md"
                         />
-                      </div>
+                      </motion.div>
                     ) : (
                       <motion.div
                         className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-4 inline-block"
