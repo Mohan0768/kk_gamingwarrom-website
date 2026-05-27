@@ -2,11 +2,13 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import Image from "next/image"
 import { TypingText } from "./typing-text"
 
 const features = [
   {
    
+    icon: "hourglass", 
     title: "60 Minutes of Intensity",
     description: "A compressed battlefield where every second counts. Make decisions under pressure that reveal your true leadership DNA.",
   },
@@ -134,11 +136,21 @@ export function AboutSection() {
                   <div className="relative z-10">
                     {/* Icon with scale animation */}
                     <motion.div
-                      className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-4 inline-block"
+                      className="mb-2 sm:mb-4 inline-block"
                       whileHover={{ scale: 1.2, rotate: 5 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                      {feature.icon}
+                      {feature.icon === "hourglass" ? (
+                        <Image
+                          src="/hourglass-icon.png"
+                          alt="Hourglass icon"
+                          width={64}
+                          height={64}
+                          className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain"
+                        />
+                      ) : (
+                        <span className="text-2xl sm:text-3xl md:text-4xl">{feature.icon}</span>
+                      )}
                     </motion.div>
 
                     {/* Title with color transition */}
