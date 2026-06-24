@@ -39,7 +39,7 @@ export function DashboardPreviewSection() {
           transition={{ duration: 1, delay: 0.3 }}
           className="relative max-w-6xl mx-auto"
         >
-          <div className="glass-metallic rounded-2xl p-4 md:p-8 relative overflow-hidden">
+          <div className="glass-metallic rounded-2xl p-2 sm:p-4 md:p-8 relative overflow-hidden">
             {/* Window header */}
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-ember/20">
               <div className="flex items-center gap-2">
@@ -59,9 +59,9 @@ export function DashboardPreviewSection() {
             </div>
 
             {/* Dashboard grid */}
-            <div className="grid grid-cols-12 gap-4">
+            <div className="grid grid-cols-12 gap-2 sm:gap-4">
               {/* Main stats */}
-              <div className="col-span-12 md:col-span-8 grid grid-cols-4 gap-4">
+              <div className="col-span-12 md:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
                 {[
                   { label: "STAGE", value: "03", color: "ember" },
                   { label: "TIME", value: "12:45", color: "gold" },
@@ -73,10 +73,10 @@ export function DashboardPreviewSection() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                    className="bg-black/30 rounded-lg p-4 text-center border border-ember/20"
+                    className="bg-black/30 rounded-lg p-2 sm:p-4 text-center border border-ember/20"
                   >
-                    <p className="text-xs font-mono text-muted-foreground mb-1">{stat.label}</p>
-                    <p className={`text-2xl md:text-3xl font-black text-${stat.color}`}>{stat.value}</p>
+                    <p className="text-[10px] sm:text-xs font-mono text-muted-foreground mb-0.5 sm:mb-1">{stat.label}</p>
+                    <p className={`text-lg sm:text-2xl md:text-3xl font-black text-${stat.color}`}>{stat.value}</p>
                   </motion.div>
                 ))}
               </div>

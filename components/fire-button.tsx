@@ -25,8 +25,8 @@ export function FireButton({
     <motion.button
       onClick={onClick}
       className={`
-        relative overflow-hidden font-black tracking-wider uppercase
-        ${isLarge ? "px-4 py-3 sm:px-8 sm:py-4 md:px-12 md:py-5 text-sm sm:text-base md:text-lg lg:text-xl" : "px-6 py-2 sm:px-8 sm:py-3 text-xs sm:text-sm md:text-base"}
+        relative overflow-hidden font-black tracking-wider uppercase transition-all min-h-[44px] sm:min-h-[48px]
+        ${isLarge ? "px-4 py-3 sm:px-8 sm:py-4 md:px-12 md:py-5 text-xs sm:text-base md:text-lg lg:text-xl" : "px-6 py-2 sm:px-8 sm:py-3 text-xs sm:text-sm md:text-base"}
         ${isPrimary 
           ? "bg-gradient-to-r from-primary via-ember to-primary text-primary-foreground" 
           : "bg-transparent border-2 border-ember text-ember hover:bg-ember/10"

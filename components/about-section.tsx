@@ -11,17 +11,14 @@ const features = [
     description: "A compressed battlefield where every second counts. Make decisions under pressure that reveal your true leadership DNA.",
   },
   {
-    icon: "🤖",
     title: "AI-Powered Analysis",
     description: "Our advanced AI observes, analyzes, and provides real-time feedback on your decision-making patterns and leadership style.",
   },
   {
-    icon: "🎯",
     title: "Real Business Scenarios",
     description: "Navigate authentic business challenges that test your strategic thinking, resource allocation, and team management skills.",
   },
   {
-    icon: "🏆",
     title: "Competitive Environment",
     description: "Compete against other participants in a high-stakes simulation where only the strongest strategies survive.",
   },
@@ -32,7 +29,7 @@ export function AboutSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section ref={ref} className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+    <section ref={ref} className="relative py-12 sm:py-16 md:py-24 lg:py-32 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
 
@@ -132,15 +129,6 @@ export function AboutSection() {
                   />
 
                   <div className="relative z-10">
-                    {/* Icon with scale animation */}
-                    <motion.div
-                      className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-4 inline-block"
-                      whileHover={{ scale: 1.2, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    >
-                      {feature.icon}
-                    </motion.div>
-
                     {/* Title with color transition */}
                     <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-ember transition-colors duration-300">
                       {feature.title}
