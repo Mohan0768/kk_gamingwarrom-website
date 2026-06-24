@@ -18,10 +18,6 @@ const features = [
     title: "Real Business Scenarios",
     description: "Navigate authentic business challenges that test your strategic thinking, resource allocation, and team management skills.",
   },
-  {
-    title: "Competitive Environment",
-    description: "Compete against other participants in a high-stakes simulation where only the strongest strategies survive.",
-  },
 ]
 
 export function AboutSection() {
