@@ -54,7 +54,7 @@ export function BattleStagesSection() {
   const [activeStage, setActiveStage] = useState<number | null>(null)
 
   return (
-    <section ref={ref} className="relative py-32 overflow-hidden">
+    <section ref={ref} className="relative py-12 sm:py-20 md:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />

@@ -54,7 +54,7 @@ export function SharkTankSection() {
             <div className="absolute bottom-0 right-0 w-12 h-12 border-r-4 border-b-4 border-ember rounded-br-lg" />
 
             {/* Investors row */}
-            <div className="flex justify-center gap-4 md:gap-8 mb-12">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 md:gap-8 mb-12">
               {[1, 2, 3, 4, 5].map((i) => (
                 <motion.div
                   key={i}

@@ -89,7 +89,7 @@ export function CTASection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full px-2 sm:px-0"
           >
             <FireButton size="large" variant="primary">
               ENTER THE WAR ROOM
@@ -104,7 +104,7 @@ export function CTASection() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground"
+            className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-muted-foreground"
           >
             <div className="flex items-center gap-2">
               <span className="text-gold">★★★★★</span>

@@ -6,19 +6,19 @@ export function HUDOverlay() {
   return (
     <div className="fixed inset-0 pointer-events-none z-20">
       {/* Corner brackets */}
-      <div className="absolute top-4 left-4 w-20 h-20">
+      <div className="absolute top-2 sm:top-4 left-2 sm:left-4 w-12 sm:w-20 h-12 sm:h-20">
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-ember to-transparent" />
         <div className="absolute top-0 left-0 w-[2px] h-full bg-gradient-to-b from-ember to-transparent" />
       </div>
-      <div className="absolute top-4 right-4 w-20 h-20">
+      <div className="absolute top-2 sm:top-4 right-2 sm:right-4 w-12 sm:w-20 h-12 sm:h-20">
         <div className="absolute top-0 right-0 w-full h-[2px] bg-gradient-to-l from-ember to-transparent" />
         <div className="absolute top-0 right-0 w-[2px] h-full bg-gradient-to-b from-ember to-transparent" />
       </div>
-      <div className="absolute bottom-4 left-4 w-20 h-20">
+      <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 w-12 sm:w-20 h-12 sm:h-20">
         <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-ember to-transparent" />
         <div className="absolute bottom-0 left-0 w-[2px] h-full bg-gradient-to-t from-ember to-transparent" />
       </div>
-      <div className="absolute bottom-4 right-4 w-20 h-20">
+      <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 w-12 sm:w-20 h-12 sm:h-20">
         <div className="absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-l from-ember to-transparent" />
         <div className="absolute bottom-0 right-0 w-[2px] h-full bg-gradient-to-t from-ember to-transparent" />
       </div>

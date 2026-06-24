@@ -29,7 +29,7 @@ export function AboutSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   return (
-    <section ref={ref} className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+    <section ref={ref} className="relative py-12 sm:py-16 md:py-24 lg:py-32 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
 
