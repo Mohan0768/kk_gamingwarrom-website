@@ -91,12 +91,16 @@ export function CTASection() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full px-2 sm:px-0"
           >
-            <FireButton size="large" variant="primary">
-              ENTER THE WAR ROOM
-            </FireButton>
-            <FireButton size="large" variant="secondary">
-              WARROM FREE TRAIL
-            </FireButton>
+            <a href="https://warroom.humanfirstbykk.com" target="_blank" rel="noopener noreferrer">
+              <FireButton size="large" variant="primary">
+                ENTER THE WAR ROOM
+              </FireButton>
+            </a>
+            <a href="https://war-roomdemo.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <FireButton size="large" variant="secondary">
+                WARROM FREE TRAIL
+              </FireButton>
+            </a>
           </motion.div>
 
           {/* Trust indicators */}
