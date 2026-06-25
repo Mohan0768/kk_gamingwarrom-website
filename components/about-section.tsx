@@ -60,15 +60,15 @@ export function AboutSection() {
 
         {/* Feature cards carousel */}
         <TypingText />
-        <div className="my-12 sm:my-16 md:my-20 overflow-x-auto scrollbar-hide">
-          <div className="flex gap-4 sm:gap-6 lg:gap-8 min-w-max pb-4">
+        <div className="my-12 sm:my-16 md:my-20">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-center items-stretch mx-auto">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 + index * 0.12 }}
-                className="group relative flex-shrink-0 w-full sm:w-96 md:w-96 snap-center"
+                className="group relative flex-shrink-0 w-full sm:w-96 md:w-96"
               >
                 {/* Flame glow background - outer */}
                 <motion.div
