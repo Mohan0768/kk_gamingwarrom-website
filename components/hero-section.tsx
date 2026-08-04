@@ -111,7 +111,7 @@ export function HeroSection() {
               ENTER THE WAR ROOM
             </FireButton>
           </a>
-          <a href="https://war-roomdemo.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <a href="https://warroom-demo-262374983592.us-central1.run.app/" target="_blank" rel="noopener noreferrer">
             <FireButton size="large" variant="secondary">
               WARROOM FREE TRIAL
             </FireButton>
