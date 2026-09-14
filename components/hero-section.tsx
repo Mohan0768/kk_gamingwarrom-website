@@ -1,13 +1,11 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { FireButton } from "./fire-button"
-import { Volume2, VolumeX } from "lucide-react"
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
-  const [isMuted, setIsMuted] = useState(false)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -15,18 +13,6 @@ export function HeroSection() {
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 200])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-
-  const toggleMute = () => {
-    const audio = document.querySelector('audio') as HTMLAudioElement
-    if (audio) {
-      if (isMuted) {
-        audio.muted = false
-      } else {
-        audio.muted = true
-      }
-      setIsMuted(!isMuted)
-    }
-  }
 
   return (
     <section
@@ -80,22 +66,6 @@ export function HeroSection() {
         className="relative z-20 container mx-auto px-4 text-center flex flex-col items-center justify-center w-full h-screen pointer-events-auto"
         style={{ opacity }}
       >
-        {/* Mute Button - Top Right */}
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          onClick={toggleMute}
-          className="absolute top-6 right-6 p-3 bg-card/80 backdrop-blur-md border border-ember/30 rounded-full hover:border-ember/60 transition-all shadow-lg shadow-ember/10 group"
-          aria-label="Toggle music mute"
-        >
-          {isMuted ? (
-            <VolumeX className="w-5 h-5 text-muted-foreground group-hover:text-ember transition-colors" />
-          ) : (
-            <Volume2 className="w-5 h-5 text-ember" />
-          )}
-        </motion.button>
-
         {/* Spacer to push content down */}
         <div className="flex-1" />
         
